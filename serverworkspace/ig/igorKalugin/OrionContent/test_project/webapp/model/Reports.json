@@ -1,0 +1,15 @@
+{
+	"filter": {
+		"Priority" : {"value1":"", "operator":"EQ"},
+		"UserStatusCode": {"value1":"", "operator":"EQ"},
+		"PostingDate":{
+		    "value1":null,
+		    "value2":null,
+		    "operator": "BT"
+		},
+		"ObjectId": {"value1":"", "operator":"EQ"},
+		"Description": {"value1":"", "operator":"Contains"},
+		"ReporterName": {"value1":"", "operator":"Contains"}
+	}	
+
+}

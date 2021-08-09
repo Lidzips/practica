@@ -1,0 +1,186 @@
+<mvc:View
+    controllerName="test.projecttest_project.controller.ItemTable"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:core="sap.ui.core"
+>
+	
+	<Page id="page" title="Demo page">
+		<fb:FilterBar 
+			id = "FilterBar"
+			header = "{i18n>filterBarTitle}"
+			reset = "onReset" 
+			search ="onFiltersApply"
+			showRestoreButton = "true"
+			showClearButton = "true"
+			defaultSpan = "XL12 L6 M3 S2"
+			defaultIndent = "XL0 L0 M0 S0"
+			filterContainerWidth = "11rem"
+		>
+			<fb:filterGroupItems>
+				<fb:FilterGroupItem
+					groupName = "Priority"
+					name = "A"
+					groupTitle = "{i18n>priorityFilterTitle}"
+					label= "{i18n>priorityFilterTitle}"
+					partOfCurrentVariant="true"
+					visibleInFilterBar="true"	
+				>
+					<fb:control>
+						<Select items = "{/PrioritySet}" selectedKey="{view>Priority/value1}" forceSelection = "false">
+		                    <core:Item key = "{PrioCode}" text = "{Description}"/>
+		                </Select>
+					</fb:control>
+				</fb:FilterGroupItem>
+				
+				<fb:FilterGroupItem
+					groupName = "UserStatus"
+					name = "B"
+					groupTitle = "{i18n>userStatusFilterTitle}"
+					label= "{i18n>userStatusFilterTitle}"
+					partOfCurrentVariant="true"
+					visibleInFilterBar="true"	
+				>
+					<fb:control>
+						<Select items = "{/DescriptiveStatusSet}" selectedKey="{view>UserStatusCode/value1}" forceSelection = "false">
+		                    <core:Item key = "{DescriptiveStatusCode}" text = "{DescriptiveStatusDescription}"/>
+		                </Select>
+					</fb:control>
+				</fb:FilterGroupItem>
+				
+				<fb:FilterGroupItem
+					groupName = "PostingDate"
+					name = "C"
+					groupTitle = "{i18n>postingDateFilterTitle}"
+					label= "{i18n>postingDateFilterTitle}"
+					partOfCurrentVariant="true"
+					visibleInFilterBar="true"	
+				>
+					<fb:control>
+						<DateRangeSelection
+							placeholder="{i18n>PostingDatePh}"
+							valueFormat = "dd.MM.yy"
+							displayFormat = "dd.MM.yy"
+							dateValue="{
+								path:'view>PostingDate/value1'
+							}"
+							secondDateValue="{
+								path:'view>PostingDate/value2'
+							}"
+							change="handleChange"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+				<fb:FilterGroupItem
+					groupName = "ObjectId"
+					name = "D"
+					groupTitle = "{i18n>objectIdFilterTitle}"
+					label= "{i18n>objectIdFilterTitle}"
+					partOfCurrentVariant="true"
+					visibleInFilterBar="true"	
+				>
+					<fb:control>
+						<Input value="{view>ObjectId/value1}"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+				
+				<fb:FilterGroupItem
+					groupName = "Description"
+					name = "E"
+					groupTitle = "{i18n>descrFilterTitle}"
+					label= "{i18n>descrFilterTitle}"
+					partOfCurrentVariant="true"
+					visibleInFilterBar="true"	
+				>
+					<fb:control>
+						<Input value="{view>Description/value1}" type="Text"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+				
+				<fb:FilterGroupItem
+					groupName = "ReporterName"
+					name = "F"
+					groupTitle = "{i18n>reporterNameFilterTitle}"
+					label= "{i18n>reporterNameFilterTitle}"
+					partOfCurrentVariant="true"
+					visibleInFilterBar="true"	
+				>
+					<fb:control>
+						<Input value="{view>ReporterName/value1}" type="Text"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+			</fb:filterGroupItems>
+		</fb:FilterBar>
+		<Table 
+			id = "itemTable"
+			class="sapUiResponsiveMargin"
+			width="auto"
+			items = "{
+	        	path : '/IncidentSet',
+	        	sorter : {
+					path : 'ObjectId',
+					descending : false
+				},
+				parameters : {
+					select : 'ObjectId,Description,ReporterName,UserStatusDescription,CreatedAtDateFormatted,ChangedAtTimestamp,TimeSpent,Guid,PriorityTxt,Priority'}
+	         }">
+			
+			<headerToolbar>
+	    		<Toolbar>
+		            <Title text="{i18n>itemTableTitle}"/>
+		            <ToolbarSpacer/>
+		        </Toolbar>
+	    	</headerToolbar>
+			
+			<columns>
+				<Column>
+					<Text text= "ObjectId"/>
+				</Column>
+				<Column>
+					<Text text= "Description"/>
+				</Column>
+				<Column>
+					<Text text= "PriorityTxt"/>
+				</Column>
+				<Column>
+					<Text text= "ReporterName"/>
+				</Column>
+				<Column>
+					<Text text= "UserStatusDescription"/>
+				</Column>
+				<Column>
+					<Text text= "PostingDate"/>
+				</Column>
+				<Column>
+					<Text text= "ChangedAtTimestamp"/>
+				</Column>
+				<Column>
+					<Text text= "TimeSpent"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem
+				type = "Active"
+				press = "onItemPress">
+					<Text text= "{ObjectId}"/>
+					<Text text= "{Description}"/>
+					<ObjectStatus
+						text = "{
+							path: 'PriorityTxt'
+						}"
+						state = "{
+							path: 'Priority',
+							formatter: '.sFormatter.getColourByCode'
+						}"
+					/>
+					<Text text= "{ReporterName}"/>
+					<Text text= "{UserStatusDescription}"/>
+					<Text text= "{CreatedAtDateFormatted}"/>
+					<Text text= "{path:'ChangedAtTimestamp', type:'sap.ui.model.type.Date', formatOptions:{style:'short', pattern: 'dd.MM.yy'}}"/>
+					<Text text= "{TimeSpent}"/>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Page>
+</mvc:View>

@@ -1,0 +1,112 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<f:SimpleForm 
+		id="SF_With_ItemDetails"
+		editable="false" 
+		layout="ColumnLayout" 
+		title="Item's details"
+		columnsM="2"
+		columnsL="2"
+		columnsXL="2"
+		>
+		
+		<f:content>
+			<Label text="ChangedAtDate"/>
+			<Text text="{path:'ChangedAtDate', type:'sap.ui.model.type.Date', formatOptions:{style:'short', pattern: 'dd.MM.yy'}}"/>
+			<Label text="ChangedAtTimestamp"/>
+			<Text text="{path:'ChangedAtTimestamp', type:'sap.ui.model.type.Date', formatOptions:{style:'short', pattern: 'dd.MM.yy'}}"/>
+			<Label text="Component"/>
+			<Text text="{Component}"/>
+			<Label text="ConfigItemId"/>
+			<Text text="{ConfigItemId}"/>
+			<Label text="ContactPerson"/>
+			<Text text="{ContactPerson}"/>
+			<Label text="Description"/>
+			<Text text="{Description}"/>
+			<Label text="EditActive"/>
+			<ObjectStatus
+				text = "{EditActive}"
+				state = "{
+					path: 'EditActive',
+					formatter: '.sFormatter.getColourByBool'
+				}"
+			/>
+			<Label text="Guid"/>
+			<Text text="{Guid}"/>
+			<Label text="HasProcessor"/>
+			<ObjectStatus
+				text = "{HasProcessor}"
+				state = "{
+					path: 'HasProcessor',
+					formatter: '.sFormatter.getColourByBool'
+				}"
+			/>
+			<Label text="IntroText"/>
+			<Text text="{IntroText}"/>
+			<Label text="IRTCriticality"/>
+			<Text text="{IRTCriticality}"/>
+			<Label text="IRTPercentage"/>
+			<ProgressIndicator 
+				displayValue="{IRTPercentage}" 
+				percentValue="{IRTPercentage}"  
+				state="Information" 
+				width="30%"
+			/>
+			<Label text="IRTStatusIcon"/>
+			<Text text="{IRTStatusIcon}"/>
+			<Label text="IsInStatusNew"/>
+			<ObjectStatus
+				text = "{IsInStatusNew}"
+				state = "{
+					path: 'IsInStatusNew',
+					formatter: '.sFormatter.getColourByBool'
+				}"
+			/>
+			<Label text="MPTCriticality"/>
+			<Text text="{MPTCriticality}"/>
+			<Label text="MPTPercentage"/>
+			<ProgressIndicator 
+				displayValue="{MPTPercentage}" 
+				percentValue="{MPTPercentage}"  
+				state="Information" width="30%"
+			/>
+			<Label text="ObjectId"/>
+			<Text text="{ObjectId}"/>
+			<Label text="OSSInst"/>
+			<Text text="{OSSInst}"/>
+			<Label text="PersonResp"/>
+			<Text text="{PersonResp}"/>
+			<Label text="PersonRespName"/>
+			<Text text="{PersonRespName}"/>
+			<Label text="PostingDate"/>
+			<Text text="{path:'PostingDate', type:'sap.ui.model.type.Date', formatOptions:{style:'short', pattern: 'dd.MM.yy'}}"/>
+			<Label text="Priority"/>
+			<ObjectStatus
+				text = "{Priority}:{PriorityTxt}"
+				state = "{
+					path: 'Priority',
+					formatter: '.sFormatter.getPriorityColourByCode'
+				}"
+			/>
+			<Label text="ProcessType"/>
+			<Text text="{ProcessType}"/>
+			<Label text="ProcessTypeTxt"/>
+			<Text text="{ProcessTypeTxt}"/>
+			<Label text="RefTextObject"/>
+			<Text text="{RefTextObject}"/>
+			<Label text="ReporterName"/>
+			<Text text="{ReporterName}"/>
+			<Label text="ServiceTeam"/>
+			<Text text="{ServiceTeam}"/>
+			<Label text="ServiceTeamList"/>
+			<Text text="{ServiceTeamList}"/>
+			<Label text="TakeoverActive"/>
+			<ObjectStatus
+				text = "{TakeoverActive}"
+				state = "{
+					path: 'TakeoverActive',
+					formatter: '.sFormatter.getColourByBool'
+				}"
+			/>
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

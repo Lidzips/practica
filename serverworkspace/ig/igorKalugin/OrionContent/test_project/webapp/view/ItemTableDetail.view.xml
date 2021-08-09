@@ -1,0 +1,20 @@
+<mvc:View
+	height="100%"
+	controllerName="test.projecttest_project.controller.ItemTableDetail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<Page
+		id="page"
+		showHeader="true" >
+		<content>
+			<core:Fragment fragmentName="test.projecttest_project.fragment.DisplayDetail" type="XML"/>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button type="Emphasized" text="Back" press="onBackPress" />
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>
